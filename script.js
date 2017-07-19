@@ -106,7 +106,7 @@ var minDepth = function(root) {
     return (left == 0 || right == 0) ? left + right +1 : Math.min(left, right)+1;
 }; 
 
-//pattern
+//pattern / just TP ;-)
 var printPattern = function(n){
 	var star = [];
 	var space, k = 0;
@@ -124,7 +124,6 @@ var printPattern = function(n){
 };
 
 //Find power to 2
-// signed integer could be negtive number
 var powerTwo = function(A){
 	var x = 2, i;
 
@@ -152,7 +151,7 @@ var maxNumber = function(nums) {
     return maxA;
 };
 //max in alternate place
-function rob(num, n) {
+function altMaxNumber(num, n) {
     var a = 0;
     var b = 0;
     
@@ -173,7 +172,6 @@ function rob(num, n) {
 var nums= [20,45,67,78,23,90,12,45];
 
 //Symmetric tree see if it is mirror of itself
-
 var isMirror = function(root){
 	if(root == null) return false;
 	if(root.left == root.right){
@@ -182,30 +180,79 @@ var isMirror = function(root){
 	return false;
 };
 
-/*   1
- 2   2
-3 4 4 3 
-[1,2,2,3,4,4,3]
+//var root = [1,2,2,3,4,4,3]
+//isMirror(root);
+
+//reverse only the vowels of a string. a e i o u
+/*split string
+traverse through to see if any of chars from string of vowels matches
+if matches then get the position of matched chars and swap them
 */
-bst.push(1);
-bst.push(2);
-bst.push(2);
-bst.push(3);
-bst.push(4);
-bst.push(3);
-bst.push(4);
+var reverseVowels = function(s) {
+    var temp;
+    var str = s.toLowerCase().split("");
+    var vowels = ['a', 'e', 'i', 'o', 'u'];
+    var position = [];
+    for(var i=0; i<str.length; i++){
+    	for(var v=0; v<vowels.length; v++){
+    		//console.log('sp ',str[i], 'vo = ', vowels[v]);
+    		if(str[i].toLowerCase() === vowels[v]){
+    			console.log(str[i], i);
+    			position.push(i);
+    		}
+    	}
+    }
+    //swapping
+    temp = str[position[0]];
+    str[position[0]] =str[position[1]];
+    str[position[1]] = temp; 
+
+    //Slower solutin
+    // var str = s.split("");
+    // var vowels = "aeiouAEIOU";
+    // var start = 0, end = str.length -1;
+    // while(start<end){
+    // 	while(start < end && vowels.indexOf(str[start]) < 0){
+    // 		start++;
+    // 	}
+    // 	while(start<end && vowels.indexOf(str[end]) < 0){
+    // 		end--;
+    // 	}
+    // 	//swap
+    // 	var t = str[start];
+    // 	str[start] = str[end];
+    // 	str[end] = t;
+
+    // 	start++;
+    // 	end--;
+    // }
+    return str.join("");
+};
+
+//remove duplicates from array
+var removeDuplicates = function(nums) {
+    if(nums.length == 1) return 1;
+    
+    var j = 0;
+    for(var i=1; i<len; i++){
+    	if(nums[i] == nums[j]){
+    		nums.splice(i, 1);
+    		j++;
+    	}
+    }
+    return j;
+};
+
+//count 
+//calculate the number of 1's in their binary representation and return them as an array
+var countBits = function(num) {
+    var f = num+1;
+    for(var i=1; i<=num;i++) f[i] = f[i/2]+(i % 2 )
+    return f;
+};
+//Print the actual result [1,1,2]
+console.log("print ", removeDuplicates([1]));
 
 
-// root = new Node(1);
-// root.left = new Node(2);
-// root.right = new Node(2);
-// root.left = new Node(3);
-// root.right = new Node(4);
-// root.left = new Node(4);
-// root.right = new Node(3);
-console.log(isMirror(bst));
-
-
-//window.onload = reverseString('hello');	
 
 
