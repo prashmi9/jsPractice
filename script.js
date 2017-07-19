@@ -106,7 +106,104 @@ var minDepth = function(root) {
     return (left == 0 || right == 0) ? left + right +1 : Math.min(left, right)+1;
 }; 
 
-console.log(findRestaurant(list1, list2));
+//pattern
+var printPattern = function(n){
+	var star = [];
+	var space, k = 0;
+	for(var i=1; i<=n; i++, k=0){
+		star = [];
+		for(space = 1; space<=n-i; space++){
+			star.push(" ");	
+		}
+		while(k != 2*i-1){
+			star.push("*");
+			k++;
+		}
+		console.log(star);
+	}
+};
+
+//Find power to 2
+// signed integer could be negtive number
+var powerTwo = function(A){
+	var x = 2, i;
+
+	if(A == 1){
+		return true;
+	}
+	for(i=2; (i<33) && (x<=Math.pow(2,16)); i++){
+		if(Math.pow(x,i) == A){
+			return true;
+		}
+		if(Math.pow(x,i) >= (Math.pow(2,32))){
+			i=1; 
+			x++;
+		}
+	}
+	return false;
+};
+
+// find max number
+var maxNumber = function(nums) {
+    var maxA; 
+    for(var i=0; i<nums.length; i++){
+        maxA = Math.max.apply(null,nums);
+    }
+    return maxA;
+};
+//max in alternate place
+function rob(num, n) {
+    var a = 0;
+    var b = 0;
+    
+    for (var i=0; i<n; i++)
+    {
+        if (i%2==0)
+        {
+            a = Math.max(a+num[i], b);
+        }
+        else
+        {
+            b = Math.max(a, b+num[i]);
+        }
+    }
+    
+    return Math.max(a, b);
+}
+var nums= [20,45,67,78,23,90,12,45];
+
+//Symmetric tree see if it is mirror of itself
+
+var isMirror = function(root){
+	if(root == null) return false;
+	if(root.left == root.right){
+		return isMirror(root.left) && isMirror(root.right);
+	}
+	return false;
+};
+
+/*   1
+ 2   2
+3 4 4 3 
+[1,2,2,3,4,4,3]
+*/
+bst.push(1);
+bst.push(2);
+bst.push(2);
+bst.push(3);
+bst.push(4);
+bst.push(3);
+bst.push(4);
+
+
+// root = new Node(1);
+// root.left = new Node(2);
+// root.right = new Node(2);
+// root.left = new Node(3);
+// root.right = new Node(4);
+// root.left = new Node(4);
+// root.right = new Node(3);
+console.log(isMirror(bst));
 
 
 //window.onload = reverseString('hello');	
