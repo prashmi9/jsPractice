@@ -125,21 +125,15 @@ var printPattern = function(n){
 
 //Find power to 2
 var powerTwo = function(A){
-	var x = 2, i;
-
-	if(A == 1){
-		return true;
-	}
-	for(i=2; (i<33) && (x<=Math.pow(2,16)); i++){
-		if(Math.pow(x,i) == A){
-			return true;
-		}
-		if(Math.pow(x,i) >= (Math.pow(2,32))){
-			i=1; 
-			x++;
-		}
-	}
-	return false;
+    var x=2;
+    var i;
+    if(A==1) return true;
+    for(i=2;(i<33)&&(x<=Math.pow(2,16));i++)
+    {   
+        if(Math.pow(x,i)==A) return true;
+        if(Math.pow(x,i) >= (Math.pow(2,32))) {i=1;x++;}
+    }
+    return false;
 };
 
 // find max number
@@ -246,9 +240,22 @@ var removeDuplicates = function(nums) {
 //count 
 //calculate the number of 1's in their binary representation and return them as an array
 var countBits = function(num) {
-    var f = num+1;
-    for(var i=1; i<=num;i++) f[i] = f[i/2]+(i % 2 )
+    var f = [];
+
+    for(var i=0; i<=num;i++){
+        f[i] = (i >>> 2).toString(2);
+       //f[i] = (i & 1);
+    } 
     return f;
+};
+
+//Mask, complementry number
+var findComplement = function(num) {
+    var mask = ~0;
+    while(num & mask)
+        mask <<= 1;
+    return ~mask & ~num;
+    
 };
 
 var isMatch = function(s, p) {
@@ -272,8 +279,55 @@ isMatch("ab", ".*") ? true
 isMatch("aab", "c*a*b") ? true
     */
 };
+
+var coverPoints = function(A, B){
+    var numSteps = 0;
+    var x, y;
+        for(var i = 0; i<A.length-1; i++){
+            x = Math.abs(A[i+1] - A[i]);
+            y = Math.abs(B[i+1] - B[i])
+            numSteps += Math.max(x,y);
+        }
+        return numSteps;
+};
+coverPoints([ 4, 8, -7, -5, -13, 9, -7, 8 ], [ 4, -15, -10, -3, -13, 12, 8, -8])
+
+//what is output
+function performOps(A){
+    B = new Array(2 * A.length)
+
+    for (var i = 0; i < A.length; i++) {
+        B[i] = A[i];
+        B[i + A.length] = A[(A.length - i) % A.length];
+    }
+    return B;
+}
+B = performOps([5, 10, 2, 1])
+for (var i = 0; i < B.length; i++) {
+//    console.log(B[i]+" ");
+}
+
+//diagonal array
+/*
+1 2 3
+4 5 6
+7 8 9
+*/
+var A = [1,2,3,4,5,6,7,8,9];
+var diagonal = function(A){
+    for (var i = 0; i < A.length; i++) {
+        for(var j = 0; j<A.length; j++){
+            console.log(A[j]); 
+            if(){
+
+            }
+        }
+        //A[i]
+    }
+};
+
 //Print the actual result [1,1,2]
-console.log("print ", isMatch("aa", "a*"));
+console.log("print ", powerTwo(4));
 
 
 
