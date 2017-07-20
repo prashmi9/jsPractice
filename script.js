@@ -250,8 +250,30 @@ var countBits = function(num) {
     for(var i=1; i<=num;i++) f[i] = f[i/2]+(i % 2 )
     return f;
 };
+
+var isMatch = function(s, p) {
+	var pat = new RegExp( "/" +p+ "/g"	);
+	var r = pat.test(s);
+	console.log('test', r);
+	
+	//  /a.*/.test("a.") single character
+	// /a*/.test("aaa")
+
+    //return s.test(/'^firstLetter'/);
+
+
+    /*
+isMatch("aa","a") ? false
+isMatch("aa","aa") ? true
+isMatch("aaa","aa") ? false
+isMatch("aa", "a*") ? true
+isMatch("aa", ".*") ? true
+isMatch("ab", ".*") ? true
+isMatch("aab", "c*a*b") ? true
+    */
+};
 //Print the actual result [1,1,2]
-console.log("print ", removeDuplicates([1]));
+console.log("print ", isMatch("aa", "a*"));
 
 
 
