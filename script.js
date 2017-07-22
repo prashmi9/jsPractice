@@ -318,7 +318,7 @@ var diagonal = function(A){
     for (var i = 0; i < A.length; i++) {
         for(var j = 0; j<A.length; j++){
             console.log(A[j]); 
-            if(){
+            if(j){
 
             }
         }
@@ -326,8 +326,94 @@ var diagonal = function(A){
     }
 };
 
+//prime function
+	var isPrime = function(A){
+		if(A < 2) return 0;
+		var upperlimit = Math.sqrt(A);
+		for (var i = 0; i <= upperlimit; i++) {
+			if(A%i == 0){
+				return 0;
+			}
+		}
+		return 1;
+	}
+//GCD
+var gcd = function (a, b) {
+	if(a == 0)
+		return b;
+	return gcd(a % b, a)
+}
+
+//find oddman 
+var oddman = function(a){
+	var ones = 0;
+	var twos = 0;
+	var index=1;
+
+for (var i = 1; i < a.length; i++) {
+	        
+	        if (A[i] != A[i - 1]) {
+	            var temp = A[index];
+	            A[index] = A[i]; //A.set(index, A.get(i));
+	            index++;
+	        }
+	    }
+	    return index;
+	// while(i <= a.length){
+	// 	for (var j = i+1; j < a.length-1; j++) {
+	// 		if(a[i] == a[j]){
+	// 			//temp = a[j];
+	// 			break;
+	// 		}
+	// 		else{
+	// 			temp = a[j];
+	// 		}
+	// 	}
+	// 	i++;
+	// }
+
+	// var ones = 0 ; //At any point of time, this variable holds XOR of all the elements which have appeared "only" once.
+ //    var twos = 0 ; //At any point of time, this variable holds XOR of all the elements which have appeared "only" twice.
+ //    var not_threes ;
+
+ //    for( var x in a )
+ //    {
+ //        twos |= ones & x ; //add it to twos if it exists in ones
+ //        ones ^= x ; //if it exists in ones, remove it, otherwise, add it
+
+ //        // Next 3 lines of code just converts the common 1's between "ones" and "twos" to zero.
+
+ //        not_threes = ~(ones & twos) ;//if x is in ones and twos, dont add it to Threes.
+ //        ones &= not_threes ;//remove x from ones
+ //        twos &= not_threes ;//remove x from twos
+ //    } 
+	// return ones;
+};
+
+// ====== FB phone interview question =========
+/* Given an arrray of integers move non zero element to right of array without using any new space;
+where "?" can be any number. Code should have good complexity and minimize the number of writes to the array
+*/
+//==============================================
+var moveRight = function(Arr){
+  var temp = 0;
+  for(var i = 0; i < Arr.length; i++){
+    if(Arr[i] == 0){
+      for(var j = i; j < Arr.length; j++ ){
+        if(Arr[j] != 0){
+          temp = Arr[i];
+          Arr[i] = Arr[j];
+          Arr[j] = temp;
+        }
+      }
+    }
+    
+  }
+  return Arr;
+};
+var Arr = [1, 0, 2, 0, 0, 3, 4];
 //Print the actual result [1,1,2]
-console.log("print ", powerTwo(4));
+console.log("print ", moveRight(Arr));
 
 
 
