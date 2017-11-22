@@ -9,7 +9,7 @@ var twoSum1 = function(nums, target) {
     }
 };
 
-//Two sun hashmap way
+//Two sum hashmap way
 var twoSum = function(nums, target){
 	var elemMap = new Object();
 	var r = [];
