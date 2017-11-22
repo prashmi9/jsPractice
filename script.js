@@ -1,5 +1,5 @@
 // Two Sum normal 102ms O(n2)
-var twoSum1 = function(nums, target) {    
+var twoSum1 = function(nums, target) {
     for(var i = 0; i < nums.length; i++){
         for(var j = i+1; j < nums.length; j++){
             if(nums[j] == target - nums[i]){
@@ -54,9 +54,9 @@ var fizzBuzz = function(n) {
             arr.push("Buzz");
         }
         else{
-        	arr.push(i);	
+        	arr.push(i);
         }
-        
+
     }
     return arr;
 };
@@ -79,14 +79,14 @@ var findRestaurant = function(list1, list2) {
     	for (var j = 0; j < list2.length; j++) {
     		if(list1[i] == list2[j]){
     			hashMap[""+(i+j)+""] = list1[i];
-    		}	
+    		}
     	}
     }
 
     var m = [];
     var min_index_sum;
     for (var key of Object.keys(hashMap)) {
-    	m.push(key);	
+    	m.push(key);
     }
     min_index_sum = Math.min.apply(null, m);
     var toStr = hashMap[min_index_sum].toString();
@@ -104,7 +104,7 @@ var minDepth = function(root) {
     var left = minDepth(root.left);
     var right = minDepth(root.right);
     return (left == 0 || right == 0) ? left + right +1 : Math.min(left, right)+1;
-}; 
+};
 
 //pattern / just TP ;-)
 var printPattern = function(n){
@@ -113,7 +113,7 @@ var printPattern = function(n){
 	for(var i=1; i<=n; i++, k=0){
 		star = [];
 		for(space = 1; space<=n-i; space++){
-			star.push(" ");	
+			star.push(" ");
 		}
 		while(k != 2*i-1){
 			star.push("*");
@@ -129,7 +129,7 @@ var powerTwo = function(A){
     var i;
     if(A==1) return true;
     for(i=2;(i<33)&&(x<=Math.pow(2,16));i++)
-    {   
+    {
         if(Math.pow(x,i)==A) return true;
         if(Math.pow(x,i) >= (Math.pow(2,32))) {i=1;x++;}
     }
@@ -138,7 +138,7 @@ var powerTwo = function(A){
 
 // find max number
 var maxNumber = function(nums) {
-    var maxA; 
+    var maxA;
     for(var i=0; i<nums.length; i++){
         maxA = Math.max.apply(null,nums);
     }
@@ -148,7 +148,7 @@ var maxNumber = function(nums) {
 function altMaxNumber(num, n) {
     var a = 0;
     var b = 0;
-    
+
     for (var i=0; i<n; i++)
     {
         if (i%2==0)
@@ -160,7 +160,7 @@ function altMaxNumber(num, n) {
             b = Math.max(a, b+num[i]);
         }
     }
-    
+
     return Math.max(a, b);
 }
 var nums= [20,45,67,78,23,90,12,45];
@@ -199,7 +199,7 @@ var reverseVowels = function(s) {
     //swapping
     temp = str[position[0]];
     str[position[0]] =str[position[1]];
-    str[position[1]] = temp; 
+    str[position[1]] = temp;
 
     //Slower solutin
     // var str = s.split("");
@@ -226,7 +226,7 @@ var reverseVowels = function(s) {
 //remove duplicates from array
 var removeDuplicates = function(nums) {
     if(nums.length == 1) return 1;
-    
+
     var j = 0;
     for(var i=1; i<len; i++){
     	if(nums[i] == nums[j]){
@@ -237,7 +237,7 @@ var removeDuplicates = function(nums) {
     return j;
 };
 
-//count 
+//count
 //calculate the number of 1's in their binary representation and return them as an array
 var countBits = function(num) {
     var f = [];
@@ -245,7 +245,7 @@ var countBits = function(num) {
     for(var i=0; i<=num;i++){
         f[i] = (i >>> 2).toString(2);
        //f[i] = (i & 1);
-    } 
+    }
     return f;
 };
 
@@ -255,14 +255,14 @@ var findComplement = function(num) {
     while(num & mask)
         mask <<= 1;
     return ~mask & ~num;
-    
+
 };
 
 var isMatch = function(s, p) {
 	var pat = new RegExp( "/" +p+ "/g"	);
 	var r = pat.test(s);
 	console.log('test', r);
-	
+
 	//  /a.*/.test("a.") single character
 	// /a*/.test("aaa")
 
@@ -317,7 +317,7 @@ var A = [1,2,3,4,5,6,7,8,9];
 var diagonal = function(A){
     for (var i = 0; i < A.length; i++) {
         for(var j = 0; j<A.length; j++){
-            console.log(A[j]); 
+            console.log(A[j]);
             if(j){
 
             }
@@ -344,14 +344,14 @@ var gcd = function (a, b) {
 	return gcd(a % b, a)
 }
 
-//find oddman 
+//find oddman
 var oddman = function(a){
 	var ones = 0;
 	var twos = 0;
 	var index=1;
 
 for (var i = 1; i < a.length; i++) {
-	        
+
 	        if (A[i] != A[i - 1]) {
 	            var temp = A[index];
 	            A[index] = A[i]; //A.set(index, A.get(i));
@@ -386,7 +386,7 @@ for (var i = 1; i < a.length; i++) {
  //        not_threes = ~(ones & twos) ;//if x is in ones and twos, dont add it to Threes.
  //        ones &= not_threes ;//remove x from ones
  //        twos &= not_threes ;//remove x from twos
- //    } 
+ //    }
 	// return ones;
 };
 
@@ -407,14 +407,68 @@ var moveRight = function(Arr){
         }
       }
     }
-    
+
   }
   return Arr;
 };
 var Arr = [1, 0, 2, 0, 0, 3, 4];
 //Print the actual result [1,1,2]
-console.log("print ", moveRight(Arr));
+
+
+function plusOne (A){
+        // var newArr = parseInt(A.join(''))+1;
+        // newArr = newArr.toString().split('').map(Number);
+        var n1= A.length, len = 0, len1 = n1, carry = 1;
+        var onid = n1, out = new Array(n1);
+        var i;
+        for ( i = (n1-1); i >= 0; i--) {
+            out[onid--] = (A[i]+carry)%10;
+            carry = (A[i]+carry)/10;
+        }
+        for(var j=0; j<n1+1 && (out[j]==0 || out[j] == undefined); j++){
+          len++;
+          out[onid] = out[j+1];
+        }
+        len1=n1+1-len;
+        return out.shift();
+	}
+var Arr =[0];
 
 
 
+function oddNumbers(l, r) {
+    var num = new Array();
+    for (var i = l; i <=r; i++){
+      if(i%2 != 0)
+        num.push(i);
+    }
+    return num;
 
+}
+function findNumber(arr, k) {
+    var str = '';
+    for(var i = 0; i < arr.length; i++){
+      if(arr[i] == k){
+        str = 'Yes';
+        break;
+      }
+      else{
+        str = 'No';
+      }
+    }
+    return str;
+}
+
+var arr = [1,1000,80,-91]
+
+function sumTwoDigits(A) {
+    // write your code in JavaScript (Node.js 6.4.0)
+    var sum = 0;
+    for(var i = 0; i < A.length; i++){
+      if((A[i] < 100 && A[i] > 9) || (A[i] <= -10  && A[i] > -100)){
+        sum += A[i];
+      }
+    }
+    return sum;
+}
+console.log("print ", sumTwoDigits(arr));
