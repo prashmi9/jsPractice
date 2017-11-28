@@ -449,11 +449,11 @@ function findNumber(arr, k) {
     var str = '';
     for(var i = 0; i < arr.length; i++){
       if(arr[i] == k){
-        str = 'Yes';
+        str = 'YES';
         break;
       }
       else{
-        str = 'No';
+        str = 'NO';
       }
     }
     return str;
